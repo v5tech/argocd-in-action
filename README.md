@@ -1,5 +1,19 @@
 # Argo CD
 
+## 使用Helm安装Argo CD
+
+```bash
+helm repo add argo-cd https://argoproj.github.io/argo-helm
+helm install argocd argo-cd/argo-cd
+
+kubectl get deployment
+kubectl get services
+
+kubectl patch svc argocd-server -p '{"spec": {"type": "LoadBalancer"}}'
+
+kubectl get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+```
+
 ## Kubernetes集群中安装Argo CD
 
 ```bash
